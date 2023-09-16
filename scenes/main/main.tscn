@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://bpjc8a8yui0ga"]
+
+[ext_resource type="Environment" uid="uid://c1wirscltx3dv" path="res://Envs/default.tres" id="1_f334s"]
+[ext_resource type="ArrayMesh" uid="uid://ccmlm6a5exj1e" path="res://models/Inner/Inner.mesh" id="1_hawvq"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_q7knf"]
+[ext_resource type="ArrayMesh" uid="uid://bmnhmovsm7kyn" path="res://models/Wing/Wing.mesh" id="2_kxhnw"]
+[ext_resource type="FontFile" uid="uid://4e0myujbakt7" path="res://fonts/Rajdhani/Rajdhani-SemiBold.ttf" id="5_wo7n8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_24knn"]
+line_spacing = 0.0
+font = ExtResource("5_wo7n8")
+font_size = 32
+font_color = Color(0.870588, 0.886275, 0.901961, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o8ser"]
+line_spacing = 0.0
+font = ExtResource("5_wo7n8")
+font_size = 24
+font_color = Color(0.360784, 0.372549, 0.4, 1)
+
+[node name="root" type="Node3D"]
+script = ExtResource("1_q7knf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_f334s")
+
+[node name="orientation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="Inner0" type="MeshInstance3D" parent="orientation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0481811, -2.10606e-09)
+mesh = ExtResource("1_hawvq")
+skeleton = NodePath("../..")
+
+[node name="Inner1" type="MeshInstance3D" parent="orientation"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.181601, 7.93805e-09)
+mesh = ExtResource("1_hawvq")
+skeleton = NodePath("../..")
+
+[node name="Wing0" type="MeshInstance3D" parent="orientation"]
+mesh = ExtResource("2_kxhnw")
+skeleton = NodePath("../..")
+
+[node name="Wing1" type="MeshInstance3D" parent="orientation"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0967623, 4.22961e-09)
+mesh = ExtResource("2_kxhnw")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.919924, 0.392096, 0, -0.392096, 0.919924, 0, 2.04535, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -203.0
+offset_top = 10.0
+offset_right = 203.0
+offset_bottom = 52.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "ELEMENTS WIND - DAVID C. ROY"
+label_settings = SubResource("LabelSettings_24knn")
+horizontal_alignment = 1
+
+[node name="RepoURL" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -213.5
+offset_top = 46.0
+offset_right = 213.5
+offset_bottom = 78.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "github.com/anasrar/godot-kinetic-sculpture"
+label_settings = SubResource("LabelSettings_o8ser")
+horizontal_alignment = 1
